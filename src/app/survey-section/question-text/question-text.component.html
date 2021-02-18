@@ -1,0 +1,10 @@
+<h2 class="text-center">{{ quiz.question }}</h2>
+
+<div class="radio-group">
+    <div *ngFor="let option of quiz.options; let i = index">
+        <input type="radio" name="option" id="option-{{ i }}">
+        <label class="text-center mb-2 grow" for="option-{{ i }}">
+            <span class="m-auto" [attr.data-hover]="option">{{ option }}</span>
+        </label>
+    </div>
+</div>

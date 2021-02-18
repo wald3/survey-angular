@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row flex-column">
+
+        <app-progress-bar 
+            class="bar-container mb-5 "
+            [comleted]="completed"
+            [length]="quizPool.length">
+        </app-progress-bar>
+       
+        <app-question-text 
+            class="quiz-text mb-5"
+            [quiz]="currentQuiz"
+            *ngIf="currentQuiz.type == 'TEXT'">
+        </app-question-text>
+       
+        <app-quiestion-number 
+            class="quiz-number mb-5"
+            [quiz]="currentQuiz"
+            *ngIf="currentQuiz.type == 'NUMBER'">
+        </app-quiestion-number>
+       
+        <input
+            class="next-step-button"
+            type="button"
+            (click)="nextStepButtonClick()"
+            value="{{completed == quizPool.length ? 'SEND EMAIL' : 'NEXT STEP' }}"
+        >   
+
+    </div>
+</div>
+
