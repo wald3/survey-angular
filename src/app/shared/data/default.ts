@@ -3,19 +3,30 @@ import { QuizEmailResult, QuizNumberResult, QuizTextResult } from "../models/qui
 
 export let quizDefaults: Array<QuizTextResult | QuizNumberResult | QuizEmailResult> = [
     {
-        type: QuizType.NUMBER,
-        question: "Age?",
-        result: undefined
+        type: QuizType.TEXT,
+        question: "Але, ну че там с деньгами?",
+        options: [
+            "С какими деньгами",
+            "Которые я вложил",
+            "Куда вложил",
+            "В капитал прожиточного минимума"
+        ],
+        answer: undefined
     },
     {
         type: QuizType.NUMBER,
-        question: "Age?",
-        result: undefined
+        question: "Ваш возраст:",
+        answer: undefined
     },
     {
         type: QuizType.NUMBER,
-        question: "Age?",
-        result: undefined
+        question: "Ваш вес:",
+        answer: undefined
+    },
+    {
+        type: QuizType.NUMBER,
+        question: "Ваш рост:",
+        answer: undefined
     },
     {
         type: QuizType.TEXT,
@@ -26,17 +37,15 @@ export let quizDefaults: Array<QuizTextResult | QuizNumberResult | QuizEmailResu
             "Куда вложил",
             "В капитал прожиточного минимума"
         ],
-        result: undefined
+        answer: undefined
     },
     {
         type: QuizType.TEXT,
-        question: "test 1234?",
+        question: "Чики-Брики и ...?",
         options: [
-            "1",
-            "2",
-            "3",
-            "4"
+            "В дамки",
+            "Маслину ловить"
         ],
-        result: undefined
+        answer: undefined
     }
 ];

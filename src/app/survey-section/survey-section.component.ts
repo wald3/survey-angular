@@ -12,6 +12,7 @@ export class SurveySectionComponent implements OnInit {
 	quizPool: Question[];
 	currentQuiz: Question;
 	completed: number = 0;
+	clickError: boolean = false;
 
 	constructor() {
 		this.quizPool = quizDefaults;
@@ -24,7 +25,11 @@ export class SurveySectionComponent implements OnInit {
 	}
 
 	nextStepButtonClick() {
-		console.log('clicked');
+		if(!this.currentQuiz?.answer){
+			this.shakeButton();
+			return;
+		}
+
 		this.completed++;
 
 		if(this.completed < this.quizPool.length){
@@ -33,10 +38,23 @@ export class SurveySectionComponent implements OnInit {
 			let email: QuizEmailResult = {
 				type: QuizType.EMAIL,
 				question: "age?",
-				result: ''
+				answer: ''
 			};
 
 			this.currentQuiz = email;
 		}
 	}
+
+	emailSendButtonClick() {
+		console.log('send email');
+		this.currentQuiz = this.quizPool[0];
+		this.completed = 0;
+	}
+
+	private shakeButton() {
+		this.clickError = true;
+		setTimeout(() => {
+		  this.clickError = false;
+		}, 200);
+	  }
 }

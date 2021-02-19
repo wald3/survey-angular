@@ -15,4 +15,9 @@ export class QuestionComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
+	onOptionClick(value) {
+		console.log(this.quiz.answer);
+		this.quiz.answer = value;
+	}
+
 }

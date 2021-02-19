@@ -13,7 +13,6 @@ export class ProgressBarComponent implements OnInit {
 	width: number;
 	
 	constructor() {
-		console.log('ctor bar');
 	}
 
 	ngOnChanges() {

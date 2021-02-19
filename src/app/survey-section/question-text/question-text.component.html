@@ -1,10 +1,13 @@
-<h2 class="text-center">{{ quiz.question }}</h2>
+<h2 class="text-center nocopy mt-5 mb-5">{{ quiz.question }}</h2>
 
 <div class="radio-group">
     <div *ngFor="let option of quiz.options; let i = index">
-        <input type="radio" name="option" id="option-{{ i }}">
-        <label class="text-center mb-2 grow" for="option-{{ i }}">
-            <span class="m-auto" [attr.data-hover]="option">{{ option }}</span>
+        <input type="radio" name="option" 
+            [value]="i" id="option-{{ i }}"
+            [checked]="i == quiz?.answer"
+            (click)="onOptionClick($event.target.value)">
+        <label class="text-center mb-2" for="option-{{ i }}">
+            <span class="m-auto nocopy" [attr.data-hover]="option">{{ option }}</span>
         </label>
     </div>
 </div>

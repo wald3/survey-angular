@@ -1,29 +1,32 @@
 <div class="container">
     <div class="row flex-column">
 
-        <app-progress-bar 
-            class="bar-container mb-5 "
-            [comleted]="completed"
-            [length]="quizPool.length">
-        </app-progress-bar>
-       
+        <div class="bar-container">
+            <app-progress-bar 
+                [comleted]="completed"
+                [length]="quizPool.length">
+            </app-progress-bar>
+            <div class="arrow-left"></div>
+        </div>
+
         <app-question-text 
-            class="quiz-text mb-5"
+            class="quiz-text"
             [quiz]="currentQuiz"
             *ngIf="currentQuiz.type == 'TEXT'">
         </app-question-text>
        
         <app-quiestion-number 
-            class="quiz-number mb-5"
+            class="quiz-number"
             [quiz]="currentQuiz"
             *ngIf="currentQuiz.type == 'NUMBER'">
         </app-quiestion-number>
        
         <input
-            class="next-step-button"
+            class="next-step-button mt-5"
             type="button"
-            (click)="nextStepButtonClick()"
-            value="{{completed == quizPool.length ? 'SEND EMAIL' : 'NEXT STEP' }}"
+            [ngClass] ="{'shake': clickError}"
+            (click)="completed <  quizPool.length ? nextStepButtonClick() : emailSendButtonClick()"
+            value="{{completed == quizPool.length ? 'отправить email' : 'следующий шаг' }}"
         >   
 
     </div>

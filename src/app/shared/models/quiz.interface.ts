@@ -3,19 +3,20 @@ import { QuizType } from "./quiz-type.enum";
 interface  Question {
     question: string;
     type: QuizType;
+    answer: number | string;
 }
 
 interface QuizTextResult extends Question {
     options: string[];
-    result: number;
+    answer: number;
 }
 
 interface QuizNumberResult extends Question {
-    result: number;
+    answer: number;
 }
 
 interface QuizEmailResult extends Question {
-    result: string;
+    answer: string;
 }
 
 
