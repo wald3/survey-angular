@@ -16,8 +16,12 @@ export class ProgressBarComponent implements OnInit {
 	}
 
 	ngOnChanges() {
-        this.width = 100 / (this.length / this.comleted);
-        
+		if(this.comleted == this.length){
+			this.width = 100;
+		}
+		else{
+			this.width = 100 / (this.length / this.comleted);
+		}        
     }
 
 	ngOnInit(): void {

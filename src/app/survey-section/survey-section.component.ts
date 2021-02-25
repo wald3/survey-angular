@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { quizDefaults } from '../shared/data/default';
+import { Router } from '@angular/router';
 import { QuizType } from '../shared/models/quiz-type.enum';
-import { Question, QuizEmailResult } from '../shared/models/quiz.interface';
+import { Question, QuizEmailResult, QuizNumberResult, QuizTextResult } from '../shared/models/quiz.interface';
+import { Location } from '@angular/common';
+import { QuizService } from '../shared/services/quiz.service';
+import { quizDefaults } from '../shared/data/default';
 
 @Component({
 	selector: 'app-survey-section',
@@ -9,19 +12,49 @@ import { Question, QuizEmailResult } from '../shared/models/quiz.interface';
 	styleUrls: ['./survey-section.component.less']
 })
 export class SurveySectionComponent implements OnInit {
-	quizPool: Question[];
+	quizPool: Question[] = [];
 	currentQuiz: Question;
 	completed: number = 0;
 	clickError: boolean = false;
 
-	constructor() {
-		this.quizPool = quizDefaults;
-		if(this.quizPool.length > 0){
-			this.currentQuiz = this.quizPool[0];
-		}
-	}
+	constructor(
+		private location: Location,
+		private surveyService: QuizService
+		) {	}
 
 	ngOnInit(): void {
+		this.surveyService.getSurveyData(this.location.path().replace('/',''))
+			.then(res => res
+				.subscribe(
+					res => { 
+						console.log('res', res);
+						this.quizPool = res as Question[];
+						this.quizPool.push({
+							type: QuizType.EMAIL,
+							question: "Введите ваш email:",
+							answer: ''
+						});
+						this.currentQuiz = this.quizPool[0];
+					},
+					err => {
+						console.log('err', err);
+						this.quizPool = quizDefaults;
+						this.quizPool.push({
+							type: QuizType.EMAIL,
+							question: "Введите ваш email:",
+							answer: ''
+						});
+						this.currentQuiz = this.quizPool[0];
+					}
+				)
+		);
+	}
+
+	previousButtonClick(){
+		if(this.completed > 0){
+			this.completed--;
+			this.currentQuiz = this.quizPool[this.completed];
+		}
 	}
 
 	nextStepButtonClick() {
@@ -34,21 +67,52 @@ export class SurveySectionComponent implements OnInit {
 
 		if(this.completed < this.quizPool.length){
 			this.currentQuiz = this.quizPool[this.completed];
-		}else{
-			let email: QuizEmailResult = {
-				type: QuizType.EMAIL,
-				question: "age?",
-				answer: ''
-			};
-
-			this.currentQuiz = email;
 		}
 	}
 
 	emailSendButtonClick() {
 		console.log('send email');
-		this.currentQuiz = this.quizPool[0];
-		this.completed = 0;
+
+		const data = this.getResult();
+		console.log(data);
+		this.surveyService.sendSurveyData(this.location.path().replace('/',''), data);
+		this.quizPool = undefined;
+		
+	}
+
+	private getResult(){
+		const data: any = {};
+		for (let i = 0; i < this.quizPool.length; i++) {
+			const quiz = this.quizPool[i];
+			if(quiz.type === QuizType.TEXT){
+				console.log(quiz.type, 'QuizTextResult');
+				const q = quiz as QuizTextResult;
+				data[i] = {
+					question: q.question,
+					answer: q.options[q.answer]
+				};
+			}
+			if(quiz.type === QuizType.NUMBER){
+				console.log(quiz.type, 'QuizNumberResult');
+				const q = quiz as QuizNumberResult;
+	
+				data[i] = {
+					question: q.question,
+					answer: q.answer
+				};
+			}
+			if(quiz.type === QuizType.EMAIL){
+				console.log(quiz.type, 'QuizEmailResult');
+				const q = quiz as QuizEmailResult;
+
+				data[i] = {
+					question: 'EMAIL:',
+					answer: q.answer
+				};
+			}
+		}
+
+		return data;
 	}
 
 	private shakeButton() {
@@ -56,5 +120,5 @@ export class SurveySectionComponent implements OnInit {
 		setTimeout(() => {
 		  this.clickError = false;
 		}, 200);
-	  }
+	}
 }

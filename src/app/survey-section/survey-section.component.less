@@ -12,6 +12,16 @@
                 0 4px 4px rgba(0,0,0,0.16), 
                 0 8px 8px rgba(0,0,0,0.20);
 
+    .star {
+        @size: 400px;
+        height:@size; 
+        height: @size;
+
+        display: block;
+        margin-left: 15%;
+    }
+
+
     .row{
         margin-right: 0;
         margin-left: 0;
@@ -23,6 +33,7 @@
 
     .arrow-left{
         @size: 40px;
+        @padding: 5px;
         @stroke: red;
         @fill: orange;
 
@@ -33,7 +44,9 @@
         fill: none;
         display: block;
         background-image: url(src\assets\svg\arrow-left.svg);
+        background-repeat: no-repeat;
         background-size: @size @size;
+        // padding: @padding;
         height: @size;
         width: @size;
 
