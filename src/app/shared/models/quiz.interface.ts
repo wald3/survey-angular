@@ -4,6 +4,7 @@ interface  Question {
     question: string;
     type: QuizType;
     answer: number | string;
+    image: string;
 }
 
 interface QuizTextResult extends Question {

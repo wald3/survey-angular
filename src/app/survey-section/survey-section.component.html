@@ -1,10 +1,20 @@
+<div *ngIf="loading" class="loading">
+    <img src="assets/gif/loading-squares.gif" class="loading-gif">
+</div>
+
+<div *ngIf="!loading && !isMobile">
+    <div style="background-image: url({{currentQuiz.image}});" class="backgr"></div>
+</div>
+
 <div class="container">
-    
     <div *ngIf="!quizPool">
-        <h2 class="text-center nocopy mt-5 mb-5">Completed!</h2>
-        <img src="assets/img/check-done.png" class="star">
+        <h2 class="text-center nocopy mt-5 mb-5">Завершено!</h2>
+        <img src="assets/gif/send-once.gif" class="send-gif">
     </div>
-    <div *ngIf="quizPool && currentQuiz" class="row flex-column">
+
+    <div *ngIf="quizPool && currentQuiz && !loading" class="row flex-column">
+
+
 
         <div class="bar-container">
             <app-progress-bar 
@@ -33,15 +43,17 @@
         <app-email-form
             class="quiz-number"
             [form]="currentQuiz"
+            (sendEmailEvent)="emailSendButtonClick($event)"
             *ngIf="currentQuiz.type == 'EMAIL'">
         </app-email-form>
 
         <input
             class="next-step-button mt-5"
             type="button"
+            *ngIf="currentQuiz.type != 'EMAIL'"
             [ngClass] ="{'shake': clickError}"
-            (click)="currentQuiz.type == 'EMAIL' ? emailSendButtonClick() : nextStepButtonClick()"
-            value="{{currentQuiz.type == 'EMAIL' ? 'отправить email' : 'следующий шаг' }}"
+            (click)="nextStepButtonClick()"
+            value="следующий шаг"
         >
     </div>
 </div>

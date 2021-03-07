@@ -1,0 +1,15 @@
+<!-- <div class="container">
+    <div class="row">
+        <div *ngFor="let route of routes" class="col-4" [routerLink]="route.link">
+            <div class="card">
+                {{route}}
+            </div>
+        </div>
+    </div>
+</div> -->
+
+<div id="grid">
+    <div *ngFor="let route of routes" [routerLink]="route.link" class="router-card">
+        {{ route.discription }}
+    </div>
+</div>

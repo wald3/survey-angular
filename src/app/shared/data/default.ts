@@ -4,48 +4,43 @@ import { QuizEmailResult, QuizNumberResult, QuizTextResult } from "../models/qui
 export let quizDefaults: Array<QuizTextResult | QuizNumberResult | QuizEmailResult> = [
     {
         type: QuizType.TEXT,
-        question: "Але, ну че там с деньгами?",
+        question: "A B C D?",
         options: [
-            "С какими деньгами",
-            "Которые я вложил",
-            "Куда вложил",
-            "В капитал прожиточного минимума"
+            "A",
+            "B",
+            "C",
+            "D"
         ],
-        answer: undefined
+        answer: undefined,
+        image: 'https://imgur.com/TZzh4fl.png'
     },
     {
         type: QuizType.NUMBER,
         question: "Ваш возраст:",
-        answer: undefined
-    },
-    {
-        type: QuizType.NUMBER,
-        question: "Ваш вес:",
-        answer: undefined
+        answer: undefined,
+        image: 'https://imgur.com/KuGM6Qe.png'
     },
     {
         type: QuizType.NUMBER,
         question: "Ваш рост:",
-        answer: undefined
+        answer: undefined,
+        image: 'https://imgur.com/OV9n2NT.png'
     },
     {
         type: QuizType.TEXT,
-        question: "Але, ну че там с деньгами?",
+        question: "1 / 2 / 3?",
         options: [
-            "С какими деньгами",
-            "Которые я вложил",
-            "Куда вложил",
-            "В капитал прожиточного минимума"
+            "1",
+            "2",
+            "3"
         ],
-        answer: undefined
+        answer: undefined,
+        image: 'https://imgur.com/ZlgHFEU.png'
     },
     {
-        type: QuizType.TEXT,
-        question: "Чики-Брики и ...?",
-        options: [
-            "В дамки",
-            "Маслину ловить"
-        ],
-        answer: undefined
+        type: QuizType.NUMBER,
+        question: "Ваш вес:",
+        answer: undefined,
+        image: 'https://imgur.com/SP8nNuU.png'
     }
 ];

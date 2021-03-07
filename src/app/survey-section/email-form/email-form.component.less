@@ -31,3 +31,73 @@ input::-webkit-inner-spin-button {
         border-bottom: 5px solid #48dcfd;
     }
 }
+
+.email-error {
+    color: rgb(250, 213, 2);
+    font-family: 'gilroybold';
+    font-size: 20px;
+    
+    img {
+        height: 26px;
+        width: 18px;
+        padding-bottom: 6px;
+    }
+}
+
+.next-step-button {
+    @button-color: #48dcfd;
+    @button-shadow: rgba(104, 223, 250, 0.31);
+
+    background: @button-color;
+    // box-shadow: 0 12px 23px @button-shadow;
+
+    font-weight: 800;
+    font-family: 'gilroybold';
+    font-size: 22px !important;
+    letter-spacing: 3px;
+
+    outline: none;
+    display: block;
+    width: 70%;
+    height: 60px;
+    margin: 0 auto;
+
+    border-radius: 10px;
+    font-weight: 800;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: center;
+
+    cursor: pointer;
+
+    :active{
+        background: @button-shadow;
+    }
+
+}
+
+.shake {
+    animation-name: shake-animation;
+    animation-duration: 0.2s;
+  }
+    
+@keyframes shake-animation {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(3px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-5px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(5px, 0, 0);
+    }
+}

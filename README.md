@@ -1,27 +1,60 @@
-# Survey
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.1.
+# SurveyApp
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Code
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<b>What server need to send on GET:</b>
 
-## Running end-to-end tests
+```javascript
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+enum QuizType {
+    TEXT = 'TEXT',
+    NUMBER = 'NUMBER',
+    EMAIL = 'EMAIL'
+}
 
-## Further help
+let quizDefaults = [
+    {
+        type: QuizType.NUMBER,
+        question: "Ваш возраст:",
+        answer: undefined,
+        image: 'https://imgur.com/mZ6JMlD.png'
+    },
+    {
+        type: QuizType.NUMBER,
+        question: "Сколько раз вы были в походе:",
+        answer: undefined,
+        image: 'https://imgur.com/5cgrj18.png'
+    },
+    {
+        type: QuizType.TEXT,
+        question: "Какое животное вам больше нравиться:",
+        options: [
+            "Волк",
+            "Медведь",
+            "Лиса",
+            "Хорек"
+        ],
+        answer: undefined,
+        image: 'https://imgur.com/YkK98dy.png'
+    }
+];
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+<b>What server will resive on POST:</b>
+![response](https://imgur.com/1mrfGyn.png)
+
+### Backend Server works
+![Backend Server works](https://imgur.com/TqNSfyE.gif)
+
+### Backend Server is not connected
+![Backend Server is not connected](https://imgur.com/FhQ6Fe8.gif)
+
+

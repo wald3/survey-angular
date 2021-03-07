@@ -1,0 +1,83 @@
+@size: 300px;
+
+#grid {
+    padding: 150px 100px 0 100px;
+    margin: 0 auto;
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(@size, 1fr));
+    // grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* see notes below */
+
+    // grid-template-columns: repeat(3, 1fr);
+    // grid-auto-rows: minmax(@size, auto);
+    grid-gap: 1em;
+
+    @media screen and (max-width: 481px) {
+      // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+      padding: 20px 20px 20px 20px;
+    }
+  }
+  
+  .router-card {
+    outline: none;
+
+    margin: 0 auto;
+    padding: 20px 20px 20px 20px;
+
+    border: none;
+    background-color: rgb(214, 214, 214);
+    width: @size;
+    height: @size;
+
+    font-family: 'gilroybold';
+    font-size: 45px;
+    line-height: 45px;
+    text-align: justify;
+
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      background-color: rgb(58, 58, 58);
+      color: rgb(255, 241, 177);
+    }
+  }
+
+// .container{
+//     height: 100vh;
+//     padding-top: 100px;
+
+//     .row {
+//         // height: 100%;
+//     }
+
+//     .col-4 {
+//         outline: none;
+//         padding: 10px;
+//     }
+
+//     .card {
+//         overflow: hidden;
+
+//         margin: 0 auto;
+//         padding: 40px 20px 0px 20px;
+//         // box-shadow: 0 1px 1px rgba(0,0,0,0.08), 
+//         //             0 2px 2px rgba(0,0,0,0.12), 
+//         //             0 4px 4px rgba(0,0,0,0.16), 
+//         //             0 8px 8px rgba(0,0,0,0.20);
+
+//         border: none;
+//         background-color: rgb(214, 214, 214);
+//         // border-radius: 15px;
+//         // border-radius: none;
+//         width: 300px;
+//         height: 300px;
+
+//         font-family: 'gilroybold';
+//         font-size: 45px;
+//         line-height: 45px;
+//         text-align: justify;
+
+//     }
+// }

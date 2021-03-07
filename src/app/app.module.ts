@@ -11,25 +11,36 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { QuizService } from './shared/services/quiz.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SurveyNotFoundComponent } from './survey-not-found/survey-not-found.component';
+import { SurveyMainComponent } from './survey-main/survey-main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SurveySectionComponent,
     QuestionComponent,
-    ProgressBarComponent,
     EmailFormComponent,
-    QuiestionNumberComponent
+    QuiestionNumberComponent,
+    SurveySectionComponent,
+    ProgressBarComponent,
+    SurveyNotFoundComponent,
+    SurveyMainComponent,
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: '**', component: SurveySectionComponent },
+      { path: '', component: SurveyMainComponent },
+
+      { path: 'default-test', component: SurveySectionComponent },
+      { path: 'setup-test', component: SurveySectionComponent },
+      /* As many routes as surveys */
+
+      { path: '**', component: SurveyNotFoundComponent },
     ])
   ],
   providers: [],
+  entryComponents: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,7 +7,7 @@ import { Observable } from "rxjs";
     providedIn: 'root',
 })
 export class QuizService {
-    private url: string = 'http://localhost:3000/api/bots';
+    private url: string = 'https://1adcc5443ca3.ngrok.io/api/v1/...';
 
     constructor(private http: HttpClient) { }
 
@@ -20,6 +20,7 @@ export class QuizService {
         console.log(`${this.url}/${path}`, data);
         return await this.http.post(`${this.url}/${path}`, data, await this.getHeader()).subscribe(
             sub => {
+                console.log(data);
                 return;
             }
         );

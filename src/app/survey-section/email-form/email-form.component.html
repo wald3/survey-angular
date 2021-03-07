@@ -1,3 +1,20 @@
 <h2 class="text-center nocopy mt-5 mb-5">{{ form.question }}</h2>
 
-<input type="email" class="survey-input nocopy" [(ngModel)]="form.answer">
+<input class="survey-input nocopy" required pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    [(ngModel)]="form.answer" #email="ngModel"
+>
+
+<div class="email-error" *ngIf="email.invalid && (email.dirty || email.touched)">
+    <img src="assets/ico/warrning.ico">
+    Неправильный email!
+</div>
+
+<input
+    class="next-step-button mt-5"
+    type="button"
+    [ngClass] ="{'shake': clickError}"
+    (click)="onSendEmailClick()"
+    value="отправить email"
+>
+
+<!-- [ngClass] ="{'disabled': email.invalid}" -->
