@@ -53,9 +53,10 @@ let quizDefaults = [
 ![response](https://imgur.com/1mrfGyn.png)
 
 ### Backend Server works
-![Backend Server works](https://imgur.com/TqNSfyE.gif)
+![Backend Server is not connected](https://imgur.com/FhQ6Fe8.gif)
+
 
 ### Backend Server is not connected
-![Backend Server is not connected](https://imgur.com/FhQ6Fe8.gif)
+![Backend Server works](https://imgur.com/TqNSfyE.gif)
 
 
